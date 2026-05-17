@@ -1,0 +1,17 @@
+{
+  "name": "@gymrat/api",
+  "version": "0.0.1",
+  "private": true,
+  "description": "NestJS backend API (scaffolding pending phase 2)",
+  "scripts": {
+    "lint": "echo 'lint placeholder — wired up in phase 2'",
+    "type-check": "echo 'type-check placeholder — wired up in phase 2'",
+    "build": "echo 'build placeholder — wired up in phase 2'",
+    "test": "echo 'test placeholder — wired up in phase 2'",
+    "dev": "echo 'dev placeholder — wired up in phase 2'",
+    "clean": "rm -rf dist .turbo"
+  },
+  "devDependencies": {
+    "@gymrat/config": "workspace:*"
+  }
+}

@@ -1,29 +1,27 @@
 node_modules
+.pnpm-store
+.pnpm-debug.log*
 
-# Output
-.output
-.vercel
-.netlify
-.wrangler
-/.svelte-kit
-/build
+dist
+build
+.next
+.turbo
+.svelte-kit
+out
 
-# OS
-.DS_Store
-Thumbs.db
-
-# Env
 .env
-.env.*
-!.env.example
-!.env.test
+.env.local
+.env.*.local
 
-# Vite
-vite.config.js.timestamp-*
-vite.config.ts.timestamp-*
-
-# PWA dev artifacts
-dev-dist
-
-# Test
 coverage
+*.tsbuildinfo
+.eslintcache
+
+.DS_Store
+.idea
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+docs/internal
+.claude

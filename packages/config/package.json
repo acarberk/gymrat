@@ -1,0 +1,29 @@
+{
+  "name": "@gymrat/config",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "Shared TypeScript, ESLint, and Prettier configurations",
+  "exports": {
+    "./tsconfig/base.json": "./tsconfig/base.json",
+    "./tsconfig/nextjs.json": "./tsconfig/nextjs.json",
+    "./tsconfig/nestjs.json": "./tsconfig/nestjs.json",
+    "./tsconfig/library.json": "./tsconfig/library.json",
+    "./eslint/base": "./eslint/base.js",
+    "./eslint/nextjs": "./eslint/nextjs.js",
+    "./eslint/nestjs": "./eslint/nestjs.js",
+    "./eslint/library": "./eslint/library.js",
+    "./prettier": "./prettier/index.js"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.59.2",
+    "@typescript-eslint/parser": "^8.59.2",
+    "eslint": "^9.39.4",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "globals": "^16.5.0",
+    "prettier": "^3.4.2"
+  }
+}
