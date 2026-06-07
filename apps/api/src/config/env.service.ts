@@ -1,0 +1,142 @@
+import { Injectable } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
+
+import { type Env } from './env.schema';
+
+@Injectable()
+export class EnvService {
+  constructor(private readonly configService: ConfigService<Env, true>) {}
+
+  get nodeEnv(): Env['NODE_ENV'] {
+    return this.configService.get('NODE_ENV', { infer: true });
+  }
+
+  get port(): Env['PORT'] {
+    return this.configService.get('PORT', { infer: true });
+  }
+
+  get databaseUrl(): Env['DATABASE_URL'] {
+    return this.configService.get('DATABASE_URL', { infer: true });
+  }
+
+  get redisUrl(): Env['REDIS_URL'] {
+    return this.configService.get('REDIS_URL', { infer: true });
+  }
+
+  get appBaseUrl(): Env['APP_BASE_URL'] {
+    return this.configService.get('APP_BASE_URL', { infer: true });
+  }
+
+  get jwtAccessSecret(): Env['JWT_ACCESS_SECRET'] {
+    return this.configService.get('JWT_ACCESS_SECRET', { infer: true });
+  }
+
+  get jwtRefreshSecret(): Env['JWT_REFRESH_SECRET'] {
+    return this.configService.get('JWT_REFRESH_SECRET', { infer: true });
+  }
+
+  get jwtAccessTtl(): Env['JWT_ACCESS_TTL'] {
+    return this.configService.get('JWT_ACCESS_TTL', { infer: true });
+  }
+
+  get jwtRefreshTtl(): Env['JWT_REFRESH_TTL'] {
+    return this.configService.get('JWT_REFRESH_TTL', { infer: true });
+  }
+
+  get cookieDomain(): Env['COOKIE_DOMAIN'] {
+    return this.configService.get('COOKIE_DOMAIN', { infer: true });
+  }
+
+  get mailerDriver(): Env['MAILER_DRIVER'] {
+    return this.configService.get('MAILER_DRIVER', { infer: true });
+  }
+
+  get mailerFrom(): Env['MAILER_FROM'] {
+    return this.configService.get('MAILER_FROM', { infer: true });
+  }
+
+  get resendApiKey(): Env['RESEND_API_KEY'] {
+    return this.configService.get('RESEND_API_KEY', { infer: true });
+  }
+
+  get emailVerificationTtl(): Env['EMAIL_VERIFICATION_TTL'] {
+    return this.configService.get('EMAIL_VERIFICATION_TTL', { infer: true });
+  }
+
+  get passwordResetTtl(): Env['PASSWORD_RESET_TTL'] {
+    return this.configService.get('PASSWORD_RESET_TTL', { infer: true });
+  }
+
+  get googleClientId(): Env['GOOGLE_CLIENT_ID'] {
+    return this.configService.get('GOOGLE_CLIENT_ID', { infer: true });
+  }
+
+  get googleClientSecret(): Env['GOOGLE_CLIENT_SECRET'] {
+    return this.configService.get('GOOGLE_CLIENT_SECRET', { infer: true });
+  }
+
+  get googleCallbackUrl(): Env['GOOGLE_CALLBACK_URL'] {
+    return this.configService.get('GOOGLE_CALLBACK_URL', { infer: true });
+  }
+
+  get isGoogleOAuthConfigured(): boolean {
+    return Boolean(this.googleClientId) && Boolean(this.googleClientSecret);
+  }
+
+  get appleClientId(): Env['APPLE_CLIENT_ID'] {
+    return this.configService.get('APPLE_CLIENT_ID', { infer: true });
+  }
+
+  get appleTeamId(): Env['APPLE_TEAM_ID'] {
+    return this.configService.get('APPLE_TEAM_ID', { infer: true });
+  }
+
+  get appleKeyId(): Env['APPLE_KEY_ID'] {
+    return this.configService.get('APPLE_KEY_ID', { infer: true });
+  }
+
+  get applePrivateKey(): Env['APPLE_PRIVATE_KEY'] {
+    return this.configService.get('APPLE_PRIVATE_KEY', { infer: true });
+  }
+
+  get appleCallbackUrl(): Env['APPLE_CALLBACK_URL'] {
+    return this.configService.get('APPLE_CALLBACK_URL', { infer: true });
+  }
+
+  get isAppleOAuthConfigured(): boolean {
+    return (
+      Boolean(this.appleClientId) &&
+      Boolean(this.appleTeamId) &&
+      Boolean(this.appleKeyId) &&
+      Boolean(this.applePrivateKey)
+    );
+  }
+
+  get turnstileSecret(): Env['TURNSTILE_SECRET'] {
+    return this.configService.get('TURNSTILE_SECRET', { infer: true });
+  }
+
+  get isTurnstileEnabled(): boolean {
+    return Boolean(this.turnstileSecret);
+  }
+
+  get throttleTtlSeconds(): Env['THROTTLE_TTL_SECONDS'] {
+    return this.configService.get('THROTTLE_TTL_SECONDS', { infer: true });
+  }
+
+  get throttleLimit(): Env['THROTTLE_LIMIT'] {
+    return this.configService.get('THROTTLE_LIMIT', { infer: true });
+  }
+
+  get isProduction(): boolean {
+    return this.nodeEnv === 'production';
+  }
+
+  get isDevelopment(): boolean {
+    return this.nodeEnv === 'development';
+  }
+
+  get isTest(): boolean {
+    return this.nodeEnv === 'test';
+  }
+}
