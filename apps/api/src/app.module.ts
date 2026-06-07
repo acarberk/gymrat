@@ -1,11 +1,15 @@
 import { Module } from '@nestjs/common';
 
+import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from './config/config.module';
 import { HealthModule } from './health/health.module';
 import { LoggerModule } from './logger/logger.module';
+import { MailerModule } from './mailer/mailer.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { RedisModule } from './redis/redis.module';
 import { AppThrottlerModule } from './throttler/app-throttler.module';
+import { TurnstileModule } from './turnstile/turnstile.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -13,7 +17,11 @@ import { AppThrottlerModule } from './throttler/app-throttler.module';
     LoggerModule,
     RedisModule,
     AppThrottlerModule,
+    TurnstileModule,
     PrismaModule,
+    MailerModule,
+    UserModule,
+    AuthModule,
     HealthModule,
   ],
 })

@@ -1,0 +1,164 @@
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { type User } from '@prisma/client';
+
+import { PrismaService } from '../prisma/prisma.service';
+
+export interface SoftDeleteResult {
+  userId: string;
+  refreshTokensRevoked: number;
+}
+
+export interface CreateWithPasswordInput {
+  email: string;
+  displayName: string;
+  passwordHash: string;
+  locale?: string;
+}
+
+export type OAuthProvider = 'google' | 'apple';
+
+export interface CreateFromOAuthInput {
+  email: string;
+  displayName: string;
+  provider: OAuthProvider;
+  providerId: string;
+  avatarUrl?: string | null;
+  locale?: string;
+}
+
+export interface UpdateProfileInput {
+  displayName?: string;
+  avatarUrl?: string | null;
+  locale?: string;
+}
+
+@Injectable()
+export class UserService {
+  constructor(private readonly prisma: PrismaService) {}
+
+  findById(id: string): Promise<User | null> {
+    return this.prisma.user.findFirst({ where: { id, deletedAt: null } });
+  }
+
+  findByEmail(email: string): Promise<User | null> {
+    return this.prisma.user.findFirst({
+      where: { email: email.toLowerCase(), deletedAt: null },
+    });
+  }
+
+  findByGoogleId(googleId: string): Promise<User | null> {
+    return this.prisma.user.findFirst({ where: { googleId, deletedAt: null } });
+  }
+
+  findByAppleId(appleId: string): Promise<User | null> {
+    return this.prisma.user.findFirst({ where: { appleId, deletedAt: null } });
+  }
+
+  createWithPassword(input: CreateWithPasswordInput): Promise<User> {
+    return this.prisma.user.create({
+      data: {
+        email: input.email.toLowerCase(),
+        displayName: input.displayName,
+        passwordHash: input.passwordHash,
+        locale: input.locale ?? 'tr',
+        emailVerified: false,
+      },
+    });
+  }
+
+  createFromOAuth(input: CreateFromOAuthInput): Promise<User> {
+    return this.prisma.user.create({
+      data: {
+        email: input.email.toLowerCase(),
+        displayName: input.displayName,
+        emailVerified: true,
+        avatarUrl: input.avatarUrl ?? null,
+        locale: input.locale ?? 'tr',
+        googleId: input.provider === 'google' ? input.providerId : null,
+        appleId: input.provider === 'apple' ? input.providerId : null,
+      },
+    });
+  }
+
+  async updateProfile(userId: string, input: UpdateProfileInput): Promise<User> {
+    const data: Record<string, unknown> = {};
+    if (input.displayName !== undefined) data.displayName = input.displayName;
+    if (input.avatarUrl !== undefined) data.avatarUrl = input.avatarUrl;
+    if (input.locale !== undefined) data.locale = input.locale;
+
+    if (Object.keys(data).length === 0) {
+      const existing = await this.findById(userId);
+      if (!existing) {
+        throw new NotFoundException(`User ${userId} not found`);
+      }
+      return existing;
+    }
+
+    return this.prisma.user.update({
+      where: { id: userId },
+      data,
+    });
+  }
+
+  markEmailVerified(userId: string): Promise<User> {
+    return this.prisma.user.update({
+      where: { id: userId },
+      data: { emailVerified: true },
+    });
+  }
+
+  updatePasswordHash(userId: string, passwordHash: string): Promise<User> {
+    return this.prisma.user.update({
+      where: { id: userId },
+      data: { passwordHash },
+    });
+  }
+
+  linkGoogleId(
+    userId: string,
+    googleId: string,
+    options: { markEmailVerified: boolean; clearPassword: boolean },
+  ): Promise<User> {
+    const data: { googleId: string; emailVerified?: true; passwordHash?: null } = { googleId };
+    if (options.markEmailVerified) {
+      data.emailVerified = true;
+    }
+    if (options.clearPassword) {
+      data.passwordHash = null;
+    }
+    return this.prisma.user.update({
+      where: { id: userId },
+      data,
+    });
+  }
+
+  async softDelete(userId: string): Promise<SoftDeleteResult> {
+    return this.prisma.$transaction(async (tx) => {
+      const claim = await tx.user.updateMany({
+        where: { id: userId, deletedAt: null },
+        data: { deletedAt: new Date() },
+      });
+
+      if (claim.count === 0) {
+        return { userId, refreshTokensRevoked: 0 };
+      }
+
+      const refreshRevoke = await tx.refreshToken.updateMany({
+        where: { userId, revokedAt: null },
+        data: { revokedAt: new Date() },
+      });
+
+      await tx.emailVerificationToken.updateMany({
+        where: { userId, usedAt: null },
+        data: { usedAt: new Date() },
+      });
+
+      await tx.passwordResetToken.updateMany({
+        where: { userId, usedAt: null },
+        data: { usedAt: new Date() },
+      });
+
+      return { userId, refreshTokensRevoked: refreshRevoke.count };
+    });
+  }
+}
