@@ -1,0 +1,117 @@
+{
+  "site": {
+    "name": "Gymrat",
+    "tagline": "Nutrition and workout — one profile, no paywall."
+  },
+  "nav": {
+    "home": "Home",
+    "nutrition": "Nutrition",
+    "workout": "Workout",
+    "progress": "Progress",
+    "profile": "Profile",
+    "signIn": "Sign in",
+    "signOut": "Sign out"
+  },
+  "home": {
+    "hero": {
+      "title": "Gymrat",
+      "subtitle": "Nutrition + workout. No ads, no subscriptions, your data stays yours.",
+      "getStarted": "Get started",
+      "signIn": "Sign in"
+    },
+    "welcome": "Welcome back, {name}",
+    "quick": {
+      "addFood": "Add food",
+      "startWorkout": "Start workout"
+    }
+  },
+  "footer": {
+    "copyright": "© {year} Gymrat",
+    "sourceCode": "Source code",
+    "dataSources": "Data sources"
+  },
+  "theme": {
+    "toggle": "Toggle theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "auth": {
+    "login": {
+      "title": "Sign in",
+      "subtitle": "Welcome back",
+      "emailLabel": "Email",
+      "emailPlaceholder": "you@gymrat.app",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "Your password",
+      "submit": "Sign in",
+      "forgotPassword": "Forgot password",
+      "noAccount": "No account yet?",
+      "register": "Register",
+      "withGoogle": "Continue with Google",
+      "error": {
+        "invalidCredentials": "Email or password is incorrect",
+        "generic": "Could not sign in. Try again."
+      }
+    },
+    "register": {
+      "title": "Register",
+      "subtitle": "Create your account",
+      "emailLabel": "Email",
+      "passwordLabel": "Password",
+      "passwordHint": "At least 8 characters",
+      "displayNameLabel": "Display name",
+      "displayNamePlaceholder": "Your name",
+      "submit": "Create account",
+      "haveAccount": "Already have an account?",
+      "login": "Sign in",
+      "withGoogle": "Sign up with Google",
+      "verifyHint": "We will send you an email to confirm your account.",
+      "error": {
+        "alreadyRegistered": "This email is already registered",
+        "generic": "Could not register. Try again."
+      }
+    },
+    "forgotPassword": {
+      "title": "Forgot password",
+      "subtitle": "Enter your email and we'll send a reset link",
+      "emailLabel": "Email",
+      "submit": "Send link",
+      "backToLogin": "Back to sign in",
+      "success": "Link sent. Check your email.",
+      "successDetail": "If an account exists, the link is on its way. Check spam if it doesn't arrive in a few minutes."
+    },
+    "resetPassword": {
+      "title": "New password",
+      "subtitle": "Set a new password",
+      "passwordLabel": "New password",
+      "passwordHint": "At least 8 characters",
+      "submit": "Update password",
+      "success": "Your password is updated. Sign in with your new password.",
+      "error": {
+        "invalidToken": "Link is invalid or expired. Request a new one."
+      }
+    },
+    "verifyEmail": {
+      "title": "Email verification",
+      "verifying": "Verifying...",
+      "success": "Your email is verified.",
+      "successCta": "Continue",
+      "error": "Link is invalid or expired. Request a new verification email.",
+      "resend": "Resend verification email",
+      "resendSuccess": "Verification email sent if the account exists."
+    },
+    "captcha": {
+      "required": "CAPTCHA verification required"
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "save": "Save",
+    "cancel": "Cancel",
+    "back": "Back",
+    "submit": "Submit",
+    "error": "An error occurred",
+    "or": "or"
+  }
+}
