@@ -1,0 +1,117 @@
+{
+  "site": {
+    "name": "Gymrat",
+    "tagline": "Beslenme ve antrenman — tek profilde, paywall'sız."
+  },
+  "nav": {
+    "home": "Ana sayfa",
+    "nutrition": "Beslenme",
+    "workout": "Antrenman",
+    "progress": "Gelişim",
+    "profile": "Profil",
+    "signIn": "Giriş yap",
+    "signOut": "Çıkış yap"
+  },
+  "home": {
+    "hero": {
+      "title": "Gymrat",
+      "subtitle": "Beslenme + workout. Reklam yok, abonelik yok, verin senin.",
+      "getStarted": "Hemen başla",
+      "signIn": "Giriş yap"
+    },
+    "welcome": "Tekrar hoş geldin, {name}",
+    "quick": {
+      "addFood": "Yemek ekle",
+      "startWorkout": "Antrenman başlat"
+    }
+  },
+  "footer": {
+    "copyright": "© {year} Gymrat",
+    "sourceCode": "Kaynak kod",
+    "dataSources": "Veri kaynakları"
+  },
+  "theme": {
+    "toggle": "Tema değiştir",
+    "light": "Açık",
+    "dark": "Koyu",
+    "system": "Sistem"
+  },
+  "auth": {
+    "login": {
+      "title": "Giriş yap",
+      "subtitle": "Hesabına dön",
+      "emailLabel": "E-posta",
+      "emailPlaceholder": "ornek@gymrat.app",
+      "passwordLabel": "Şifre",
+      "passwordPlaceholder": "Şifren",
+      "submit": "Giriş yap",
+      "forgotPassword": "Şifremi unuttum",
+      "noAccount": "Hesabın yok mu?",
+      "register": "Kayıt ol",
+      "withGoogle": "Google ile devam et",
+      "error": {
+        "invalidCredentials": "E-posta veya şifre yanlış",
+        "generic": "Giriş yapılamadı. Tekrar dene."
+      }
+    },
+    "register": {
+      "title": "Kayıt ol",
+      "subtitle": "Hesabını oluştur",
+      "emailLabel": "E-posta",
+      "passwordLabel": "Şifre",
+      "passwordHint": "En az 8 karakter",
+      "displayNameLabel": "Görünen ad",
+      "displayNamePlaceholder": "Adın",
+      "submit": "Hesap oluştur",
+      "haveAccount": "Hesabın var mı?",
+      "login": "Giriş yap",
+      "withGoogle": "Google ile kayıt ol",
+      "verifyHint": "Hesabını onaylamak için sana e-posta göndereceğiz.",
+      "error": {
+        "alreadyRegistered": "Bu e-posta zaten kayıtlı",
+        "generic": "Kayıt yapılamadı. Tekrar dene."
+      }
+    },
+    "forgotPassword": {
+      "title": "Şifremi unuttum",
+      "subtitle": "E-postanı gir, şifre sıfırlama bağlantısı gönderelim",
+      "emailLabel": "E-posta",
+      "submit": "Bağlantı gönder",
+      "backToLogin": "Girişe dön",
+      "success": "Bağlantı gönderildi. E-postanı kontrol et.",
+      "successDetail": "Hesap varsa bağlantı geldi. Birkaç dakika içinde gelmediyse spam'i kontrol et."
+    },
+    "resetPassword": {
+      "title": "Yeni şifre",
+      "subtitle": "Yeni şifreni belirle",
+      "passwordLabel": "Yeni şifre",
+      "passwordHint": "En az 8 karakter",
+      "submit": "Şifreyi güncelle",
+      "success": "Şifren güncellendi. Yeni şifrenle giriş yapabilirsin.",
+      "error": {
+        "invalidToken": "Bağlantı geçersiz veya süresi dolmuş. Yeniden iste."
+      }
+    },
+    "verifyEmail": {
+      "title": "E-posta onayı",
+      "verifying": "Onaylanıyor...",
+      "success": "E-postan onaylandı.",
+      "successCta": "Devam et",
+      "error": "Bağlantı geçersiz veya süresi dolmuş. Yeni bir onay e-postası iste.",
+      "resend": "Onay e-postasını tekrar gönder",
+      "resendSuccess": "Hesabın varsa onay e-postası gönderildi."
+    },
+    "captcha": {
+      "required": "CAPTCHA doğrulaması gerekli"
+    }
+  },
+  "common": {
+    "loading": "Yükleniyor...",
+    "save": "Kaydet",
+    "cancel": "İptal",
+    "back": "Geri",
+    "submit": "Gönder",
+    "error": "Bir hata oluştu",
+    "or": "veya"
+  }
+}
